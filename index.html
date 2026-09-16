@@ -12,14 +12,14 @@
   :root{
     --paper:#FFF3D6;      /* sıcak krem zemin */
     --paper-2:#FBE8BE;    /* biraz koyu krem */
-    --ink:#12291E;        /* koyu yeşil-siyah metin */
-    --forest:#1C6B47;     /* ana yeşil */
-    --forest-deep:#0F3D2A;/* koyu yeşil */
+    --ink:#2A1A0E;        /* koyu yeşil-siyah metin */
+    --forest:#FD5E00;     /* ana yeşil */
+    --forest-deep:#D24E00;/* koyu yeşil */
     --amber:#F2A81D;      /* fırsat sarısı */
     --rust:#C6612B;       /* sincap sıcak tonu */
-    --mint:#E9F1DD;       /* yumuşak yüzey */
-    --line:rgba(18,41,30,.16);
-    --shadow:0 18px 40px -24px rgba(15,61,42,.55);
+    --mint:#FDEBD6;       /* yumuşak yüzey */
+    --line:rgba(42,26,14,.16);
+    --shadow:0 18px 40px -24px rgba(42,26,14,.55);
     --r:18px;
     --maxw:1160px;
   }
@@ -40,7 +40,7 @@
   /* ---- paper grain (çok hafif doku, jenerik gradient yerine) ---- */
   body::before{
     content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
-    background-image:radial-gradient(rgba(18,41,30,.05) 1px,transparent 1.4px);
+    background-image:radial-gradient(rgba(42,26,14,.05) 1px,transparent 1.4px);
     background-size:22px 22px;mix-blend-mode:multiply;
   }
   main,header,footer{position:relative;z-index:1}
@@ -51,13 +51,15 @@
   .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
   .brand{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;letter-spacing:-.03em}
   .brand svg{display:block}
+  .logo-img{height:28px;width:auto;display:block}
+  .foot .logo-img{height:32px}
   .nav-links{display:flex;align-items:center;gap:30px}
   .nav-links a{font-weight:600;font-size:15px;color:var(--ink);opacity:.8}
   .nav-links a:hover{opacity:1}
   .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:999px;
     padding:12px 20px;font-size:15px;border:2px solid var(--ink);transition:transform .12s ease, box-shadow .12s ease}
-  .btn-solid{background:var(--forest);color:#fff;border-color:var(--forest);box-shadow:0 8px 20px -10px rgba(28,107,71,.9)}
-  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 13px 26px -10px rgba(28,107,71,.95);background:var(--forest-deep);border-color:var(--forest-deep)}
+  .btn-solid{background:var(--forest);color:#fff;border-color:var(--forest);box-shadow:0 8px 20px -10px rgba(253,94,0,.9)}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 13px 26px -10px rgba(253,94,0,.95);background:var(--forest-deep);border-color:var(--forest-deep)}
   .nav-links a.btn-solid{color:#fff}
   .nav-cta{letter-spacing:-.01em}
   .btn-ghost:hover{transform:translateY(-2px)}
@@ -71,20 +73,20 @@
   .hero h1 .zula{position:relative;color:var(--forest);white-space:nowrap}
   .hero h1 .zula::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.08em;height:.36em;
     background:var(--amber);z-index:-1;border-radius:3px;transform:rotate(-1.2deg)}
-  .hero p.lead{font-size:clamp(17px,2.1vw,21px);max-width:33ch;margin:22px 0 0;color:rgba(18,41,30,.82)}
+  .hero p.lead{font-size:clamp(17px,2.1vw,21px);max-width:33ch;margin:22px 0 0;color:rgba(42,26,14,.82)}
   .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
   .store-btn{display:inline-flex;align-items:center;gap:11px;background:var(--ink);color:var(--paper);
     padding:12px 20px;border-radius:14px;font-weight:600}
   .store-btn small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;font-family:"Space Mono",monospace}
   .store-btn b{display:block;font-size:17px;line-height:1;margin-top:2px}
   .store-btn:hover{transform:translateY(-2px);transition:transform .12s}
-  .trust{margin-top:24px;display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(18,41,30,.65)}
+  .trust{margin-top:24px;display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(42,26,14,.65)}
   .stars{color:var(--amber);letter-spacing:2px}
 
   /* ---- hero görsel: zula/kavanoz sahnesi (inline SVG, elle kurgulanmış) ---- */
   .hero-art{position:relative;display:flex;justify-content:center}
   .jar-wrap{position:relative;width:min(420px,92%)}
-  .jar-wrap svg{width:100%;height:auto;display:block;filter:drop-shadow(0 26px 34px rgba(15,61,42,.28))}
+  .jar-wrap svg{width:100%;height:auto;display:block;filter:drop-shadow(0 26px 34px rgba(42,26,14,.28))}
   /* uçuşan fiyat biletleri = imza öğe (perforeli kenar) */
   .ticket{position:absolute;background:#fff;border-radius:12px;padding:12px 14px 12px 16px;
     box-shadow:var(--shadow);border:1px solid var(--line);min-width:150px}
@@ -96,7 +98,7 @@
   .ticket .t-name{font-weight:700;font-size:15px;margin:2px 0 6px}
   .ticket .t-price{display:flex;align-items:baseline;gap:8px}
   .ticket .t-now{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;color:var(--forest)}
-  .ticket .t-old{font-size:13px;color:rgba(18,41,30,.45);text-decoration:line-through}
+  .ticket .t-old{font-size:13px;color:rgba(42,26,14,.45);text-decoration:line-through}
   .ticket .t-off{margin-left:auto;background:var(--amber);color:var(--ink);font-weight:700;font-size:12px;padding:2px 8px;border-radius:999px}
   .ticket.t1{top:6%;left:-6%;animation:float 6s ease-in-out infinite}
   .ticket.t2{bottom:8%;right:-8%;animation:float 6s ease-in-out infinite .8s}
@@ -115,7 +117,7 @@
   section{padding:96px 0}
   .sec-head{max-width:640px;margin-bottom:52px}
   .sec-head h2{font-size:clamp(30px,4.4vw,52px);font-weight:800;margin-top:12px}
-  .sec-head p{color:rgba(18,41,30,.72);margin:14px 0 0;font-size:18px}
+  .sec-head p{color:rgba(42,26,14,.72);margin:14px 0 0;font-size:18px}
 
   /* nasıl çalışır (gerçek sıra olduğu için numaralı) */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -124,11 +126,11 @@
   .step .num{font-family:"Space Mono",monospace;font-weight:700;font-size:14px;color:var(--forest);
     border:1.5px solid var(--forest);border-radius:999px;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
   .step h3{font-size:23px;margin:20px 0 8px;font-weight:700}
-  .step p{margin:0;color:rgba(18,41,30,.75);font-size:15.5px}
+  .step p{margin:0;color:rgba(42,26,14,.75);font-size:15.5px}
   .step .ic{position:absolute;top:26px;right:24px;color:var(--rust)}
 
   /* etki bandı */
-  .impact{background:var(--forest-deep);color:var(--paper);border-radius:28px;padding:56px 40px;
+  .impact{background:var(--ink);color:var(--paper);border-radius:28px;padding:56px 40px;
     display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:28px;align-items:end}
   .impact .lead-col h2{color:#fff;font-size:clamp(26px,3vw,36px)}
   .impact .lead-col p{color:rgba(255,255,255,.72);margin-top:10px;font-size:15px}
@@ -139,11 +141,11 @@
   .merchant{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);border-radius:26px;overflow:hidden}
   .merchant .mtext{padding:52px 44px;background:var(--paper-2)}
   .merchant .mtext h2{font-size:clamp(28px,3.4vw,44px);font-weight:800}
-  .merchant .mtext p{color:rgba(18,41,30,.78);margin:16px 0 26px}
+  .merchant .mtext p{color:rgba(42,26,14,.78);margin:16px 0 26px}
   .merchant ul{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:12px}
   .merchant li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
   .merchant li svg{flex:none;margin-top:2px;color:var(--forest)}
-  .merchant .mside{background:var(--forest);color:#fff;padding:52px 44px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+  .merchant .mside{background:var(--ink);color:#fff;padding:52px 44px;display:flex;flex-direction:column;justify-content:center;gap:18px}
   .merchant .mside .big{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(40px,6vw,68px);line-height:.95;color:var(--amber)}
   .merchant .mside .cap{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.05em;color:rgba(255,255,255,.85)}
 
@@ -155,7 +157,7 @@
   details summary::-webkit-details-marker{display:none}
   details summary .plus{flex:none;width:30px;height:30px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;transition:transform .2s}
   details[open] summary .plus{transform:rotate(45deg);background:var(--amber);border-color:var(--amber)}
-  details p{margin:14px 0 0;color:rgba(18,41,30,.76);font-size:16px}
+  details p{margin:14px 0 0;color:rgba(42,26,14,.76);font-size:16px}
 
   /* CTA finali */
   .final{text-align:center;background:var(--amber);border-radius:28px;padding:72px 32px;border:2px solid var(--ink)}
@@ -167,9 +169,9 @@
   .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
   .foot .cols{display:flex;gap:64px;flex-wrap:wrap}
   .foot h4{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin:0 0 14px}
-  .foot a{display:block;color:rgba(18,41,30,.75);font-size:15px;margin-bottom:9px}
+  .foot a{display:block;color:rgba(42,26,14,.75);font-size:15px;margin-bottom:9px}
   .foot a:hover{color:var(--ink)}
-  .foot .note{font-family:"Space Mono",monospace;font-size:12px;color:rgba(18,41,30,.5);margin-top:30px}
+  .foot .note{font-family:"Space Mono",monospace;font-size:12px;color:rgba(42,26,14,.5);margin-top:30px}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
@@ -184,28 +186,28 @@
   /* sürpriz paket bölümü */
   .surprise{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
   .surprise .bag{display:flex;justify-content:center}
-  .surprise .bag svg{width:min(340px,88%);height:auto;filter:drop-shadow(0 22px 30px rgba(15,61,42,.25))}
+  .surprise .bag svg{width:min(340px,88%);height:auto;filter:drop-shadow(0 22px 30px rgba(42,26,14,.25))}
   .value-card{margin-top:26px;border:2px dashed var(--ink);border-radius:16px;padding:10px 24px;background:var(--paper);max-width:400px}
   .value-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0}
   .value-row + .value-row{border-top:1px dashed var(--line)}
-  .value-row .k{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.04em;color:rgba(18,41,30,.72)}
+  .value-row .k{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.04em;color:rgba(42,26,14,.72)}
   .value-row .v{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px}
   .value-row .v.pay{color:var(--forest)}
-  .value-row .v.old{color:rgba(18,41,30,.42);text-decoration:line-through;font-size:19px}
+  .value-row .v.old{color:rgba(42,26,14,.42);text-decoration:line-through;font-size:19px}
 
   /* uygulama ekran görüntüleri (telefon çerçeveleri) */
-  .showcase{background:var(--forest-deep);color:var(--paper);border-radius:28px;padding:64px 32px 12px;overflow:hidden}
+  .showcase{background:var(--ink);color:var(--paper);border-radius:28px;padding:64px 32px 12px;overflow:hidden}
   .showcase .sh-head{text-align:center;max-width:620px;margin:0 auto 8px}
   .showcase .sh-head h2{color:#fff;font-size:clamp(28px,4vw,46px);font-weight:800}
   .showcase .sh-head p{color:rgba(255,255,255,.72);margin-top:12px}
   .showcase .eyebrow{color:var(--amber)}
   .phones{display:flex;gap:26px;justify-content:center;align-items:flex-end;flex-wrap:wrap;margin-top:40px}
-  .phone{width:244px;flex:none;background:#0b1f17;border-radius:42px;padding:9px;box-shadow:0 30px 50px -20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
+  .phone{width:244px;flex:none;background:#201509;border-radius:42px;padding:9px;box-shadow:0 30px 50px -20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
   .phone.mid{transform:translateY(-26px)}
   .phone .screen{background:var(--paper);border-radius:34px;overflow:hidden;height:500px;position:relative;display:flex;flex-direction:column;color:var(--ink)}
   .phone .screen img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
   .phone .screen .island{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:82px;height:23px;background:#000;border-radius:14px;z-index:5}
-  .phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:84px;height:16px;background:#0b1f17;border-radius:12px;z-index:4}
+  .phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:84px;height:16px;background:#201509;border-radius:12px;z-index:4}
   .ph-cap{text-align:center;color:rgba(255,255,255,.7);font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;margin-top:16px}
   /* mini app ui */
   .app{display:flex;flex-direction:column;height:100%;font-size:12px}
@@ -213,7 +215,7 @@
   .app-loc{font-weight:700;font-size:13px}
   .app-loc small{display:block;font-family:"Space Mono",monospace;font-size:9px;letter-spacing:.08em;color:var(--rust);text-transform:uppercase}
   .app-ic{width:30px;height:30px;border-radius:50%;background:var(--mint);display:grid;place-items:center}
-  .app-search{margin:0 16px 12px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;color:rgba(18,41,30,.5);display:flex;gap:8px;align-items:center;font-size:12px}
+  .app-search{margin:0 16px 12px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;color:rgba(42,26,14,.5);display:flex;gap:8px;align-items:center;font-size:12px}
   .app-body{flex:1;overflow:hidden;padding:0 16px 14px;display:flex;flex-direction:column;gap:12px}
   .app-h{font-family:"Bricolage Grotesque";font-weight:800;font-size:16px;margin:2px 0}
   .card{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
@@ -221,15 +223,15 @@
   .card .tag{background:var(--amber);color:var(--ink);font-family:"Space Mono",monospace;font-weight:700;font-size:10px;padding:3px 7px;border-radius:6px}
   .card .body{padding:9px 11px 11px}
   .card .nm{font-weight:700;font-size:13px}
-  .card .mt{color:rgba(18,41,30,.55);font-size:11px;margin:1px 0 7px}
+  .card .mt{color:rgba(42,26,14,.55);font-size:11px;margin:1px 0 7px}
   .card .pr{display:flex;align-items:baseline;gap:7px}
   .card .now{font-family:"Bricolage Grotesque";font-weight:800;color:var(--forest);font-size:16px}
-  .card .old{font-size:11px;color:rgba(18,41,30,.4);text-decoration:line-through}
+  .card .old{font-size:11px;color:rgba(42,26,14,.4);text-decoration:line-through}
   .card .left{margin-left:auto;font-family:"Space Mono",monospace;font-size:10px;color:var(--rust)}
   .app-btn{background:var(--forest);color:#fff;text-align:center;font-weight:700;border-radius:12px;padding:12px;font-size:13px}
   .vrow{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;font-size:12px}
   .vrow + .vrow{border-top:1px dashed var(--line)}
-  .vrow .kk{font-family:"Space Mono",monospace;color:rgba(18,41,30,.65);font-size:11px}
+  .vrow .kk{font-family:"Space Mono",monospace;color:rgba(42,26,14,.65);font-size:11px}
   .vrow .vv{font-family:"Bricolage Grotesque";font-weight:800;font-size:16px}
   .code{background:var(--mint);border:1.5px dashed var(--forest);border-radius:14px;padding:14px;text-align:center}
   .code .big{font-family:"Bricolage Grotesque";font-weight:800;font-size:30px;letter-spacing:4px;color:var(--forest-deep)}
@@ -264,15 +266,8 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#">
-      <!-- palamut/zula markası -->
-      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M6 12h20l-2 2H8z" fill="#12291E"/>
-        <path d="M8 14h16v3c0 5-3.6 9-8 9s-8-4-8-9z" fill="#C6612B"/>
-        <path d="M8 14h16v3c0 1.2-.2 2.3-.6 3.3C20 21 18 21.6 16 21.6S12 21 8.6 20.3C8.2 19.3 8 18.2 8 17z" fill="#12291E" opacity=".18"/>
-        <path d="M15 4c3 1 4.5 3.4 4 6H14c-.4-2.6.6-5 1-6z" fill="#1C6B47"/>
-      </svg>
-      <span class="wm">Zuu<span style="color:var(--forest)">gla</span></span>
+    <a class="brand" href="#" aria-label="Zuugla">
+      <img class="logo-img" src="logo.png" alt="Zuugla" />
     </a>
     <nav class="nav-links">
       <a href="#nasil">Nasıl çalışır</a>
@@ -314,18 +309,18 @@
           <!-- "Zula" kavanozu: iyi yemeğin istiflendiği yer -->
           <svg viewBox="0 0 360 380" role="img" aria-label="İçi taze paketlerle dolu Zuugla kavanozu">
             <!-- kapak -->
-            <rect x="96" y="44" width="168" height="34" rx="12" fill="#12291E"/>
-            <rect x="108" y="30" width="144" height="24" rx="10" fill="#1C6B47"/>
+            <rect x="96" y="44" width="168" height="34" rx="12" fill="#2A1A0E"/>
+            <rect x="108" y="30" width="144" height="24" rx="10" fill="#FD5E00"/>
             <!-- kavanoz gövdesi -->
-            <path d="M84 96c0-10 8-18 18-18h156c10 0 18 8 18 18v212c0 24-19 44-44 44H128c-25 0-44-20-44-44z" fill="#E9F1DD" stroke="#12291E" stroke-width="5"/>
+            <path d="M84 96c0-10 8-18 18-18h156c10 0 18 8 18 18v212c0 24-19 44-44 44H128c-25 0-44-20-44-44z" fill="#FDEBD6" stroke="#2A1A0E" stroke-width="5"/>
             <!-- etiket -->
-            <rect x="120" y="150" width="120" height="150" rx="12" fill="#FFF3D6" stroke="#12291E" stroke-width="3"/>
-            <text x="180" y="186" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="23" fill="#1C6B47">ZUUGLA</text>
-            <line x1="138" y1="206" x2="222" y2="206" stroke="#12291E" stroke-opacity=".2" stroke-width="2"/>
+            <rect x="120" y="150" width="120" height="150" rx="12" fill="#FFF3D6" stroke="#2A1A0E" stroke-width="3"/>
+            <text x="180" y="186" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="23" fill="#FD5E00">ZUUGLA</text>
+            <line x1="138" y1="206" x2="222" y2="206" stroke="#2A1A0E" stroke-opacity=".2" stroke-width="2"/>
             <!-- içerik: küçük paketler/palamutlar -->
             <circle cx="152" cy="238" r="15" fill="#C6612B"/>
             <circle cx="188" cy="232" r="12" fill="#F2A81D"/>
-            <circle cx="212" cy="252" r="14" fill="#1C6B47"/>
+            <circle cx="212" cy="252" r="14" fill="#FD5E00"/>
             <circle cx="160" cy="270" r="11" fill="#F2A81D"/>
             <rect x="178" y="258" width="26" height="22" rx="4" fill="#C6612B"/>
             <!-- parıltı -->
@@ -431,19 +426,19 @@
           <svg viewBox="0 0 300 340" role="img" aria-label="Zuugla sürpriz paketi (kraft kese kağıdı)">
             <!-- katlı üst -->
             <path d="M60 70l40-26 100 0 40 26-20 20H80z" fill="#D98A44"/>
-            <path d="M60 70h180l-8 12H68z" fill="#12291E" opacity=".15"/>
+            <path d="M60 70h180l-8 12H68z" fill="#2A1A0E" opacity=".15"/>
             <!-- gövde -->
             <path d="M62 86h176v208c0 12-10 22-22 22H84c-12 0-22-10-22-22z" fill="#C6612B"/>
-            <path d="M62 86h176v18H62z" fill="#12291E" opacity=".12"/>
+            <path d="M62 86h176v18H62z" fill="#2A1A0E" opacity=".12"/>
             <!-- yan kıvrım gölgesi -->
-            <path d="M104 86v230M196 86v230" stroke="#12291E" stroke-opacity=".12" stroke-width="6"/>
+            <path d="M104 86v230M196 86v230" stroke="#2A1A0E" stroke-opacity=".12" stroke-width="6"/>
             <!-- etiket -->
-            <rect x="96" y="150" width="108" height="120" rx="12" fill="#FFF3D6" stroke="#12291E" stroke-width="3"/>
-            <text x="150" y="190" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="21" fill="#1C6B47">ZUUGLA</text>
+            <rect x="96" y="150" width="108" height="120" rx="12" fill="#FFF3D6" stroke="#2A1A0E" stroke-width="3"/>
+            <text x="150" y="190" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="21" fill="#FD5E00">ZUUGLA</text>
             <!-- küçük yaprak (taze) -->
-            <path d="M150 205c10 0 18 7 18 16-9 0-18-6-18-16z" fill="#1C6B47"/>
-            <line x1="120" y1="238" x2="180" y2="238" stroke="#12291E" stroke-opacity=".18" stroke-width="2"/>
-            <text x="150" y="256" text-anchor="middle" font-family="Space Mono" font-size="11" fill="#12291E" opacity=".6">SÜRPRİZ PAKET</text>
+            <path d="M150 205c10 0 18 7 18 16-9 0-18-6-18-16z" fill="#FD5E00"/>
+            <line x1="120" y1="238" x2="180" y2="238" stroke="#2A1A0E" stroke-opacity=".18" stroke-width="2"/>
+            <text x="150" y="256" text-anchor="middle" font-family="Space Mono" font-size="11" fill="#2A1A0E" opacity=".6">SÜRPRİZ PAKET</text>
           </svg>
         </div>
         <div class="reveal">
@@ -537,9 +532,8 @@
 <footer>
   <div class="wrap foot">
     <div>
-      <a class="brand" href="#" style="margin-bottom:14px">
-        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 12h20l-2 2H8z" fill="#12291E"/><path d="M8 14h16v3c0 5-3.6 9-8 9s-8-4-8-9z" fill="#C6612B"/><path d="M15 4c3 1 4.5 3.4 4 6H14c-.4-2.6.6-5 1-6z" fill="#1C6B47"/></svg>
-        <span class="wm">Zuu<span style="color:var(--forest)">gla</span></span>
+      <a class="brand" href="#" aria-label="Zuugla" style="margin-bottom:14px">
+        <img class="logo-img" src="logo.png" alt="Zuugla" />
       </a>
       <div class="note">İyi yemek çöpe değil, sofraya gider.<br/>© 2026 Zuugla</div>
     </div>
