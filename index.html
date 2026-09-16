@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zula'dan — İyi yemek çöpe değil, zulaya gider</title>
-<meta name="description" content="Restoran, fırın ve marketlerin gün sonu fazlası sürpriz paketlerini zula fiyatına kap. Sen kazan, esnaf kazan, dünya kazanır." />
+<title>Zuugla — İyi yemek çöpe değil, zulaya gider</title>
+<meta name="description" content="Restoran, fırın ve marketlerin gün sonu fazlası sürpriz paketlerini zula fiyatına kap. Zuugla ile sen kazan, esnaf kazan, dünya kazanır." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesque:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -191,6 +191,48 @@
   .value-row .v.pay{color:var(--forest)}
   .value-row .v.old{color:rgba(18,41,30,.42);text-decoration:line-through;font-size:19px}
 
+  /* uygulama ekran görüntüleri (telefon çerçeveleri) */
+  .showcase{background:var(--forest-deep);color:var(--paper);border-radius:28px;padding:64px 32px 12px;overflow:hidden}
+  .showcase .sh-head{text-align:center;max-width:620px;margin:0 auto 8px}
+  .showcase .sh-head h2{color:#fff;font-size:clamp(28px,4vw,46px);font-weight:800}
+  .showcase .sh-head p{color:rgba(255,255,255,.72);margin-top:12px}
+  .showcase .eyebrow{color:var(--amber)}
+  .phones{display:flex;gap:26px;justify-content:center;align-items:flex-end;flex-wrap:wrap;margin-top:40px}
+  .phone{width:244px;flex:none;background:#0b1f17;border-radius:42px;padding:9px;box-shadow:0 30px 50px -20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
+  .phone.mid{transform:translateY(-26px)}
+  .phone .screen{background:var(--paper);border-radius:34px;overflow:hidden;height:500px;position:relative;display:flex;flex-direction:column;color:var(--ink)}
+  .phone .screen img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  .phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:84px;height:16px;background:#0b1f17;border-radius:12px;z-index:4}
+  .ph-cap{text-align:center;color:rgba(255,255,255,.7);font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;margin-top:16px}
+  /* mini app ui */
+  .app{display:flex;flex-direction:column;height:100%;font-size:12px}
+  .app-top{padding:26px 16px 12px;display:flex;align-items:center;justify-content:space-between}
+  .app-loc{font-weight:700;font-size:13px}
+  .app-loc small{display:block;font-family:"Space Mono",monospace;font-size:9px;letter-spacing:.08em;color:var(--rust);text-transform:uppercase}
+  .app-ic{width:30px;height:30px;border-radius:50%;background:var(--mint);display:grid;place-items:center}
+  .app-search{margin:0 16px 12px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;color:rgba(18,41,30,.5);display:flex;gap:8px;align-items:center;font-size:12px}
+  .app-body{flex:1;overflow:hidden;padding:0 16px 14px;display:flex;flex-direction:column;gap:12px}
+  .app-h{font-family:"Bricolage Grotesque";font-weight:800;font-size:16px;margin:2px 0}
+  .card{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+  .card .cover{height:66px;position:relative;display:flex;align-items:flex-end;padding:8px}
+  .card .tag{background:var(--amber);color:var(--ink);font-family:"Space Mono",monospace;font-weight:700;font-size:10px;padding:3px 7px;border-radius:6px}
+  .card .body{padding:9px 11px 11px}
+  .card .nm{font-weight:700;font-size:13px}
+  .card .mt{color:rgba(18,41,30,.55);font-size:11px;margin:1px 0 7px}
+  .card .pr{display:flex;align-items:baseline;gap:7px}
+  .card .now{font-family:"Bricolage Grotesque";font-weight:800;color:var(--forest);font-size:16px}
+  .card .old{font-size:11px;color:rgba(18,41,30,.4);text-decoration:line-through}
+  .card .left{margin-left:auto;font-family:"Space Mono",monospace;font-size:10px;color:var(--rust)}
+  .app-btn{background:var(--forest);color:#fff;text-align:center;font-weight:700;border-radius:12px;padding:12px;font-size:13px}
+  .vrow{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;font-size:12px}
+  .vrow + .vrow{border-top:1px dashed var(--line)}
+  .vrow .kk{font-family:"Space Mono",monospace;color:rgba(18,41,30,.65);font-size:11px}
+  .vrow .vv{font-family:"Bricolage Grotesque";font-weight:800;font-size:16px}
+  .code{background:var(--mint);border:1.5px dashed var(--forest);border-radius:14px;padding:14px;text-align:center}
+  .code .big{font-family:"Bricolage Grotesque";font-weight:800;font-size:30px;letter-spacing:4px;color:var(--forest-deep)}
+  .code small{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust)}
+  .check{width:56px;height:56px;border-radius:50%;background:var(--forest);display:grid;place-items:center;margin:6px auto 4px}
+
   /* ---------------- responsive ---------------- */
   @media(max-width:900px){
     .hero-grid{grid-template-columns:1fr;gap:36px}
@@ -227,7 +269,7 @@
         <path d="M8 14h16v3c0 1.2-.2 2.3-.6 3.3C20 21 18 21.6 16 21.6S12 21 8.6 20.3C8.2 19.3 8 18.2 8 17z" fill="#12291E" opacity=".18"/>
         <path d="M15 4c3 1 4.5 3.4 4 6H14c-.4-2.6.6-5 1-6z" fill="#1C6B47"/>
       </svg>
-      <span class="wm">Zula<span style="color:var(--forest)">'dan</span></span>
+      <span class="wm">Zuu<span style="color:var(--forest)">gla</span></span>
     </a>
     <nav class="nav-links">
       <a href="#nasil">Nasıl çalışır</a>
@@ -272,7 +314,7 @@
             <path d="M84 96c0-10 8-18 18-18h156c10 0 18 8 18 18v212c0 24-19 44-44 44H128c-25 0-44-20-44-44z" fill="#E9F1DD" stroke="#12291E" stroke-width="5"/>
             <!-- etiket -->
             <rect x="120" y="150" width="120" height="150" rx="12" fill="#FFF3D6" stroke="#12291E" stroke-width="3"/>
-            <text x="180" y="188" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="30" fill="#1C6B47">ZULA</text>
+            <text x="180" y="186" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="23" fill="#1C6B47">ZUUGLA</text>
             <line x1="138" y1="206" x2="222" y2="206" stroke="#12291E" stroke-opacity=".2" stroke-width="2"/>
             <!-- içerik: küçük paketler/palamutlar -->
             <circle cx="152" cy="238" r="15" fill="#C6612B"/>
@@ -351,6 +393,30 @@
     </div>
   </section>
 
+  <!-- UYGULAMA EKRANLARI -->
+  <section id="uygulama" style="padding-top:0">
+    <div class="wrap">
+      <div class="showcase reveal">
+        <div class="sh-head">
+          <div class="eyebrow">Cebinde</div>
+          <h2>Zula avı avucunun içinde.</h2>
+          <p>Keşfet, ayır, kodunla al. Uygulama sade — üç dokunuşta paketin hazır.</p>
+        </div>
+        <div class="phones">
+          <div class="phone">
+            <div class="screen"><img src="screens/kesfet.jpg" alt="Zuugla Keşfet ekranı — yakındaki sürpriz paketler" loading="lazy" /></div>
+          </div>
+          <div class="phone mid">
+            <div class="screen"><img src="screens/detay.jpg" alt="Zuugla paket detayı — fırın sürpriz paketi ve fiyatı" loading="lazy" /></div>
+          </div>
+          <div class="phone">
+            <div class="screen"><img src="screens/siparis.jpg" alt="Zuugla sipariş onayı — teslim kodu ve PIN" loading="lazy" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SÜRPRİZ PAKET -->
   <section id="paket" style="padding-top:0">
     <div class="wrap">
@@ -367,7 +433,7 @@
             <path d="M104 86v230M196 86v230" stroke="#12291E" stroke-opacity=".12" stroke-width="6"/>
             <!-- etiket -->
             <rect x="96" y="150" width="108" height="120" rx="12" fill="#FFF3D6" stroke="#12291E" stroke-width="3"/>
-            <text x="150" y="192" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="26" fill="#1C6B47">ZULA</text>
+            <text x="150" y="190" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="21" fill="#1C6B47">ZUUGLA</text>
             <!-- küçük yaprak (taze) -->
             <path d="M150 205c10 0 18 7 18 16-9 0-18-6-18-16z" fill="#1C6B47"/>
             <line x1="120" y1="238" x2="180" y2="238" stroke="#12291E" stroke-opacity=".18" stroke-width="2"/>
@@ -433,7 +499,7 @@
     <div class="wrap">
       <div class="sec-head reveal" style="margin-inline:auto;text-align:center">
         <div class="eyebrow" style="text-align:center">Merak edilenler</div>
-        <h2>Zula'dan kısaca.</h2>
+        <h2>Zuugla kısaca.</h2>
       </div>
       <div class="faq">
         <details open><summary>Pakette ne çıkacağını biliyor muyum? <span class="plus">+</span></summary>
@@ -442,8 +508,8 @@
           <p>Paketler normal fiyatının genelde yarısı ya da altındadır. Ortalama tasarruf %60 civarında.</p></details>
         <details><summary>Paketi ne zaman alıyorum? <span class="plus">+</span></summary>
           <p>Her işletme bir alım penceresi belirler (çoğunlukla gün sonu). Ayırdığın saat aralığında gidip kodunla teslim alırsın.</p></details>
-        <details><summary>"Zula" ne demek? <span class="plus">+</span></summary>
-          <p>Zula, saklanan değerli şeyin adıdır — sincapların kışa hazırlık istifi gibi. Biz de şehrin iyi yemeğini çöpe gitmeden istifliyoruz.</p></details>
+        <details><summary>"Zuugla" ne demek? <span class="plus">+</span></summary>
+          <p>Adımız "zula"dan geliyor: saklanan değerli şeyin adı — sincapların kışa hazırlık istifi gibi. Zuugla da şehrin iyi yemeğini çöpe gitmeden istifleyip sana ulaştırır.</p></details>
       </div>
     </div>
   </section>
@@ -467,9 +533,9 @@
     <div>
       <a class="brand" href="#" style="margin-bottom:14px">
         <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 12h20l-2 2H8z" fill="#12291E"/><path d="M8 14h16v3c0 5-3.6 9-8 9s-8-4-8-9z" fill="#C6612B"/><path d="M15 4c3 1 4.5 3.4 4 6H14c-.4-2.6.6-5 1-6z" fill="#1C6B47"/></svg>
-        <span class="wm">Zula<span style="color:var(--forest)">'dan</span></span>
+        <span class="wm">Zuu<span style="color:var(--forest)">gla</span></span>
       </a>
-      <div class="note">İyi yemek çöpe değil, zulaya gider.<br/>© 2026 Zula'dan</div>
+      <div class="note">İyi yemek çöpe değil, zulaya gider.<br/>© 2026 Zuugla</div>
     </div>
     <div class="cols">
       <div><h4>Uygulama</h4><a href="#nasil">Nasıl çalışır</a><a href="#etki">Etki</a><a href="#indir">İndir</a></div>
