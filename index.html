@@ -177,6 +177,7 @@
   .foot .note{font-family:"Space Mono",monospace;font-size:12px;color:rgba(42,26,14,.5);margin-top:30px}
   .footbant{background:var(--ink);color:rgba(255,255,255,.72);text-align:center;
     font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.08em;padding:15px 20px}
+  .footbant a{color:#fff;text-decoration:underline;text-underline-offset:2px}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
@@ -550,16 +551,20 @@
     </div>
   </div>
 </footer>
-<div class="footbant">Zuugla, bir Fırsat dijital ürünüdür.</div>
+<div class="footbant">Zuugla, bir <a href="firsat-dijital.html">Fırsat Dijital</a> ürünüdür. · © 2026 Tüm hakları saklıdır.</div>
 
 <script>
   // deals ticker içeriği
   (function(){
     var items=[
-      ["Mis Fırın","Sabah Sürprizi","₺39"],["Ada Sushi","Akşam Paketi","₺89"],
-      ["Yeşil Market","Manav Kasası","₺59"],["Kırk Fırın","Poğaça Paketi","₺29"],
-      ["Nar Kafe","Tatlı Kutusu","₺45"],["Deniz Restoran","Şef Paketi","₺120"],
-      ["Günaydın Pastane","Kek Paketi","₺49"]
+      ["Ataşehir Bereket Fırını","Fırın Karışık Paket","₺39"],
+      ["Mis Fırın","Sabah Sürprizi","₺29"],
+      ["Ada Sushi","Akşam Paketi","₺89"],
+      ["Anadolu Ekmek Evi","Poğaça & Simit","₺25"],
+      ["Yeşil Manav","Sebze-Meyve Kasası","₺59"],
+      ["Nar Kafe","Tatlı Kutusu","₺45"],
+      ["Deniz Restoran","Şef Paketi","₺119"],
+      ["Günaydın Pastane","Pasta & Kurabiye","₺49"]
     ];
     var t=document.getElementById('tick'), html="";
     function row(){var s="";items.forEach(function(i){s+='<span><i class="dot"></i>'+i[0]+' · '+i[1]+' <b>'+i[2]+'</b></span>';});return s;}
