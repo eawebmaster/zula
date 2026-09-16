@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zula'dan — İyi yemek çöpe değil, zulaya gider</title>
+<meta name="description" content="Restoran, fırın ve marketlerin gün sonu fazlası sürpriz paketlerini zula fiyatına kap. Sen kazan, esnaf kazan, dünya kazanır." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesque:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#FFF3D6;      /* sıcak krem zemin */
+    --paper-2:#FBE8BE;    /* biraz koyu krem */
+    --ink:#12291E;        /* koyu yeşil-siyah metin */
+    --forest:#1C6B47;     /* ana yeşil */
+    --forest-deep:#0F3D2A;/* koyu yeşil */
+    --amber:#F2A81D;      /* fırsat sarısı */
+    --rust:#C6612B;       /* sincap sıcak tonu */
+    --mint:#E9F1DD;       /* yumuşak yüzey */
+    --line:rgba(18,41,30,.16);
+    --shadow:0 18px 40px -24px rgba(15,61,42,.55);
+    --r:18px;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Hanken Grotesque",system-ui,sans-serif;
+    font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.02;margin:0;letter-spacing:-.02em;overflow-wrap:break-word}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .mono{font-family:"Space Mono",monospace;letter-spacing:.02em}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--forest)}
+
+  /* ---- paper grain (çok hafif doku, jenerik gradient yerine) ---- */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:radial-gradient(rgba(18,41,30,.05) 1px,transparent 1.4px);
+    background-size:22px 22px;mix-blend-mode:multiply;
+  }
+  main,header,footer{position:relative;z-index:1}
+
+  /* ---------------- NAV ---------------- */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
+    background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;letter-spacing:-.03em}
+  .brand svg{display:block}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-weight:600;font-size:15px;color:var(--ink);opacity:.8}
+  .nav-links a:hover{opacity:1}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:999px;
+    padding:12px 20px;font-size:15px;border:2px solid var(--ink);transition:transform .12s ease, box-shadow .12s ease}
+  .btn-solid{background:var(--forest);color:#fff;border-color:var(--forest)}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-ghost:hover{transform:translateY(-2px)}
+  .nav .btn{padding:10px 18px}
+  .menu-btn{display:none}
+
+  /* ---------------- HERO ---------------- */
+  .hero{padding:70px 0 40px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(34px,7.4vw,84px);font-weight:800;overflow-wrap:break-word}
+  .hero h1 .zula{position:relative;color:var(--forest);white-space:nowrap}
+  .hero h1 .zula::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.08em;height:.36em;
+    background:var(--amber);z-index:-1;border-radius:3px;transform:rotate(-1.2deg)}
+  .hero p.lead{font-size:clamp(17px,2.1vw,21px);max-width:33ch;margin:22px 0 0;color:rgba(18,41,30,.82)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .store-btn{display:inline-flex;align-items:center;gap:11px;background:var(--ink);color:var(--paper);
+    padding:12px 20px;border-radius:14px;font-weight:600}
+  .store-btn small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;font-family:"Space Mono",monospace}
+  .store-btn b{display:block;font-size:17px;line-height:1;margin-top:2px}
+  .store-btn:hover{transform:translateY(-2px);transition:transform .12s}
+  .trust{margin-top:24px;display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(18,41,30,.65)}
+  .stars{color:var(--amber);letter-spacing:2px}
+
+  /* ---- hero görsel: zula/kavanoz sahnesi (inline SVG, elle kurgulanmış) ---- */
+  .hero-art{position:relative;display:flex;justify-content:center}
+  .jar-wrap{position:relative;width:min(420px,92%)}
+  .jar-wrap svg{width:100%;height:auto;display:block;filter:drop-shadow(0 26px 34px rgba(15,61,42,.28))}
+  /* uçuşan fiyat biletleri = imza öğe (perforeli kenar) */
+  .ticket{position:absolute;background:#fff;border-radius:12px;padding:12px 14px 12px 16px;
+    box-shadow:var(--shadow);border:1px solid var(--line);min-width:150px}
+  .ticket::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;
+    background:radial-gradient(circle at 0 6px,transparent 0 4px,#fff 4px) 0 0/8px 14px repeat-y;
+    /* perforasyon illüzyonu için sol kenar noktaları */
+  }
+  .ticket .t-shop{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust)}
+  .ticket .t-name{font-weight:700;font-size:15px;margin:2px 0 6px}
+  .ticket .t-price{display:flex;align-items:baseline;gap:8px}
+  .ticket .t-now{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;color:var(--forest)}
+  .ticket .t-old{font-size:13px;color:rgba(18,41,30,.45);text-decoration:line-through}
+  .ticket .t-off{margin-left:auto;background:var(--amber);color:var(--ink);font-weight:700;font-size:12px;padding:2px 8px;border-radius:999px}
+  .ticket.t1{top:6%;left:-6%;animation:float 6s ease-in-out infinite}
+  .ticket.t2{bottom:8%;right:-8%;animation:float 6s ease-in-out infinite .8s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+  /* ---------------- TICKER ---------------- */
+  .ticker{background:var(--ink);color:var(--paper);border-top:2px solid var(--forest-deep);border-bottom:2px solid var(--forest-deep);overflow:hidden}
+  .ticker-track{display:flex;gap:0;white-space:nowrap;will-change:transform;animation:slide 32s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .ticker span{display:inline-flex;align-items:center;gap:12px;padding:14px 26px;font-family:"Space Mono",monospace;font-size:14px;letter-spacing:.04em}
+  .ticker .dot{width:8px;height:8px;border-radius:50%;background:var(--amber)}
+  .ticker b{color:var(--amber)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------------- SECTIONS ---------------- */
+  section{padding:96px 0}
+  .sec-head{max-width:640px;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(30px,4.4vw,52px);font-weight:800;margin-top:12px}
+  .sec-head p{color:rgba(18,41,30,.72);margin:14px 0 0;font-size:18px}
+
+  /* nasıl çalışır — gerçek sıra olduğu için numaralı */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{background:var(--mint);border:2px solid var(--ink);border-radius:var(--r);padding:28px 24px;position:relative;transition:transform .16s ease}
+  .step:hover{transform:translateY(-4px)}
+  .step .num{font-family:"Space Mono",monospace;font-weight:700;font-size:14px;color:var(--forest);
+    border:1.5px solid var(--forest);border-radius:999px;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:23px;margin:20px 0 8px;font-weight:700}
+  .step p{margin:0;color:rgba(18,41,30,.75);font-size:15.5px}
+  .step .ic{position:absolute;top:26px;right:24px;color:var(--rust)}
+
+  /* etki bandı */
+  .impact{background:var(--forest-deep);color:var(--paper);border-radius:28px;padding:56px 40px;
+    display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:28px;align-items:end}
+  .impact .lead-col h2{color:#fff;font-size:clamp(26px,3vw,36px)}
+  .impact .lead-col p{color:rgba(255,255,255,.72);margin-top:10px;font-size:15px}
+  .stat .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(34px,4.4vw,52px);color:var(--amber);line-height:1}
+  .stat .l{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:8px}
+
+  /* esnaf paneli */
+  .merchant{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);border-radius:26px;overflow:hidden}
+  .merchant .mtext{padding:52px 44px;background:var(--paper-2)}
+  .merchant .mtext h2{font-size:clamp(28px,3.4vw,44px);font-weight:800}
+  .merchant .mtext p{color:rgba(18,41,30,.78);margin:16px 0 26px}
+  .merchant ul{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:12px}
+  .merchant li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
+  .merchant li svg{flex:none;margin-top:2px;color:var(--forest)}
+  .merchant .mside{background:var(--forest);color:#fff;padding:52px 44px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+  .merchant .mside .big{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(40px,6vw,68px);line-height:.95;color:var(--amber)}
+  .merchant .mside .cap{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.05em;color:rgba(255,255,255,.85)}
+
+  /* SSS */
+  .faq{max-width:820px;margin:0 auto}
+  details{border-bottom:1px solid var(--line);padding:22px 4px}
+  details summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;
+    font-family:"Bricolage Grotesque";font-weight:700;font-size:20px}
+  details summary::-webkit-details-marker{display:none}
+  details summary .plus{flex:none;width:30px;height:30px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;transition:transform .2s}
+  details[open] summary .plus{transform:rotate(45deg);background:var(--amber);border-color:var(--amber)}
+  details p{margin:14px 0 0;color:rgba(18,41,30,.76);font-size:16px}
+
+  /* CTA finali */
+  .final{text-align:center;background:var(--amber);border-radius:28px;padding:72px 32px;border:2px solid var(--ink)}
+  .final h2{font-size:clamp(32px,5vw,60px);font-weight:800;max-width:16ch;margin:0 auto}
+  .final .cta-row{justify-content:center}
+
+  /* footer */
+  footer{border-top:2px solid var(--ink);padding:56px 0 40px}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+  .foot .cols{display:flex;gap:64px;flex-wrap:wrap}
+  .foot h4{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin:0 0 14px}
+  .foot a{display:block;color:rgba(18,41,30,.75);font-size:15px;margin-bottom:9px}
+  .foot a:hover{color:var(--ink)}
+  .foot .note{font-family:"Space Mono",monospace;font-size:12px;color:rgba(18,41,30,.5);margin-top:30px}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* kategoriler şeridi (TGTG mantığı) */
+  .cats{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cats .wrap{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding-top:20px;padding-bottom:20px}
+  .cats .lbl{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-right:6px}
+  .chip{border:1.5px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14.5px;background:var(--paper);transition:background .12s,color .12s}
+  .chip:hover{background:var(--ink);color:var(--paper)}
+
+  /* sürpriz paket bölümü */
+  .surprise{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .surprise .bag{display:flex;justify-content:center}
+  .surprise .bag svg{width:min(340px,88%);height:auto;filter:drop-shadow(0 22px 30px rgba(15,61,42,.25))}
+  .value-card{margin-top:26px;border:2px dashed var(--ink);border-radius:16px;padding:10px 24px;background:var(--paper);max-width:400px}
+  .value-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0}
+  .value-row + .value-row{border-top:1px dashed var(--line)}
+  .value-row .k{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.04em;color:rgba(18,41,30,.72)}
+  .value-row .v{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px}
+  .value-row .v.pay{color:var(--forest)}
+  .value-row .v.old{color:rgba(18,41,30,.42);text-decoration:line-through;font-size:19px}
+
+  /* ---------------- responsive ---------------- */
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-art{order:-1}
+    .steps{grid-template-columns:1fr}
+    .impact{grid-template-columns:1fr 1fr;gap:32px;padding:40px 28px}
+    .impact .lead-col{grid-column:1/-1}
+    .surprise{grid-template-columns:1fr;gap:32px}
+    .surprise .bag{order:-1}
+    .merchant{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .menu-btn{display:inline-flex}
+  }
+  @media(max-width:520px){
+    .impact{grid-template-columns:1fr 1fr}
+    .foot .cols{gap:36px}
+    section{padding:72px 0}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <!-- palamut/zula markası -->
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M6 12h20l-2 2H8z" fill="#12291E"/>
+        <path d="M8 14h16v3c0 5-3.6 9-8 9s-8-4-8-9z" fill="#C6612B"/>
+        <path d="M8 14h16v3c0 1.2-.2 2.3-.6 3.3C20 21 18 21.6 16 21.6S12 21 8.6 20.3C8.2 19.3 8 18.2 8 17z" fill="#12291E" opacity=".18"/>
+        <path d="M15 4c3 1 4.5 3.4 4 6H14c-.4-2.6.6-5 1-6z" fill="#1C6B47"/>
+      </svg>
+      <span class="wm">Zula<span style="color:var(--forest)">'dan</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#nasil">Nasıl çalışır</a>
+      <a href="#etki">Etki</a>
+      <a href="#esnaf">İşletmeler</a>
+      <a href="#sss">SSS</a>
+      <a class="btn btn-solid" href="#indir">Uygulamayı indir</a>
+    </nav>
+    <a class="btn btn-ghost menu-btn" href="#indir">İndir</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Gün sonu fazlası • zula fiyatına</div>
+        <h1>İyi yemek çöpe değil, <span class="zula">zulaya</span> gider.</h1>
+        <p class="lead">Restoran, fırın ve marketlerin gün sonu kalan taze paketlerini yarı fiyatına (ve altına) kap. Sincap gibi: iyisini stokla, hiçbiri boşa gitmesin.</p>
+        <div class="cta-row" id="indir">
+          <a class="store-btn" href="#" aria-label="App Store'dan indir">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.5-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.3 2-1.4 2.5-.4 6.1 1 8.1.7 1 1.4 2 2.4 2 .9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-1 2.3-2 .7-1.1 1-2.1 1-2.2 0 0-1.9-.7-1.9-2.9zM14.7 6.3c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.9.1 1.8-.4 2.3-1.1z"/></svg>
+            <span><small>İndir</small><b>App Store</b></span>
+          </a>
+          <a class="store-btn" href="#" aria-label="Google Play'den indir">
+            <svg width="18" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l.1.1L13 12.1v-.2L3.7 2.2zM17 15.3l-2.9-2.9L17 9.5l3.4 1.9c1 .6 1 1.5 0 2zM13.6 12.7l3 3-9.4 5.3c-.4.2-.8.1-1-.1zM7.2 3.1l6.4 6.2-3 3-6.4-9.1c.2-.2.6-.3 1-.1z"/></svg>
+            <span><small>İndir</small><b>Google Play</b></span>
+          </a>
+        </div>
+        <div class="trust"><span class="stars">★★★★★</span> 12.000+ kullanıcı bugün bir öğün kurtardı</div>
+      </div>
+
+      <div class="hero-art">
+        <div class="jar-wrap">
+          <!-- "Zula" kavanozu: iyi yemeğin istiflendiği yer -->
+          <svg viewBox="0 0 360 380" role="img" aria-label="İçi taze paketlerle dolu Zula kavanozu">
+            <!-- kapak -->
+            <rect x="96" y="44" width="168" height="34" rx="12" fill="#12291E"/>
+            <rect x="108" y="30" width="144" height="24" rx="10" fill="#1C6B47"/>
+            <!-- kavanoz gövdesi -->
+            <path d="M84 96c0-10 8-18 18-18h156c10 0 18 8 18 18v212c0 24-19 44-44 44H128c-25 0-44-20-44-44z" fill="#E9F1DD" stroke="#12291E" stroke-width="5"/>
+            <!-- etiket -->
+            <rect x="120" y="150" width="120" height="150" rx="12" fill="#FFF3D6" stroke="#12291E" stroke-width="3"/>
+            <text x="180" y="188" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="30" fill="#1C6B47">ZULA</text>
+            <line x1="138" y1="206" x2="222" y2="206" stroke="#12291E" stroke-opacity=".2" stroke-width="2"/>
+            <!-- içerik: küçük paketler/palamutlar -->
+            <circle cx="152" cy="238" r="15" fill="#C6612B"/>
+            <circle cx="188" cy="232" r="12" fill="#F2A81D"/>
+            <circle cx="212" cy="252" r="14" fill="#1C6B47"/>
+            <circle cx="160" cy="270" r="11" fill="#F2A81D"/>
+            <rect x="178" y="258" width="26" height="22" rx="4" fill="#C6612B"/>
+            <!-- parıltı -->
+            <path d="M104 120c0 40 0 120 0 150" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".5"/>
+          </svg>
+        </div>
+
+        <div class="ticket t1">
+          <div class="t-shop">Mis Fırın · 400m</div>
+          <div class="t-name">Sabah Sürprizi</div>
+          <div class="t-price"><span class="t-now">₺39</span><span class="t-old">₺120</span><span class="t-off">-67%</span></div>
+        </div>
+        <div class="ticket t2">
+          <div class="t-shop">Ada Sushi · 1.2km</div>
+          <div class="t-name">Akşam Paketi</div>
+          <div class="t-price"><span class="t-now">₺89</span><span class="t-old">₺260</span><span class="t-off">-65%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="tick">
+      <!-- JS ile ikiye katlanır -->
+    </div>
+  </div>
+
+  <!-- KATEGORİLER -->
+  <div class="cats">
+    <div class="wrap">
+      <span class="lbl">Nerelerden</span>
+      <span class="chip">Fırınlar</span>
+      <span class="chip">Restoranlar</span>
+      <span class="chip">Marketler</span>
+      <span class="chip">Kafeler</span>
+      <span class="chip">Tatlıcılar</span>
+      <span class="chip">Manavlar</span>
+      <span class="chip">Oteller</span>
+    </div>
+  </div>
+
+  <!-- NASIL ÇALIŞIR -->
+  <section id="nasil">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Üç adımda</div>
+        <h2>Kapmak sincap işi kadar kolay.</h2>
+        <p>Yakınındaki zulaları keşfet, sürpriz paketini ayır, belirtilen saatte kap. Hepsi bu.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">01</div>
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+          <h3>Keşfet</h3>
+          <p>Haritada yakınındaki restoran, fırın ve marketlerin bugünkü sürpriz paketlerini gör.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">02</div>
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <h3>Ayır</h3>
+          <p>Beğendiğin paketi uygulamadan ayır. Kartla ya da işletmede öde — sen seç.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">03</div>
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <h3>Kurtar</h3>
+          <p>Belirtilen saatte git, kodunu göster, paketini al. Ortalama %60 tasarruf cepte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÜRPRİZ PAKET -->
+  <section id="paket" style="padding-top:0">
+    <div class="wrap">
+      <div class="surprise">
+        <div class="bag reveal">
+          <svg viewBox="0 0 300 340" role="img" aria-label="Zula sürpriz paketi (kraft kese kağıdı)">
+            <!-- katlı üst -->
+            <path d="M60 70l40-26 100 0 40 26-20 20H80z" fill="#D98A44"/>
+            <path d="M60 70h180l-8 12H68z" fill="#12291E" opacity=".15"/>
+            <!-- gövde -->
+            <path d="M62 86h176v208c0 12-10 22-22 22H84c-12 0-22-10-22-22z" fill="#C6612B"/>
+            <path d="M62 86h176v18H62z" fill="#12291E" opacity=".12"/>
+            <!-- yan kıvrım gölgesi -->
+            <path d="M104 86v230M196 86v230" stroke="#12291E" stroke-opacity=".12" stroke-width="6"/>
+            <!-- etiket -->
+            <rect x="96" y="150" width="108" height="120" rx="12" fill="#FFF3D6" stroke="#12291E" stroke-width="3"/>
+            <text x="150" y="192" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="26" fill="#1C6B47">ZULA</text>
+            <!-- küçük yaprak (taze) -->
+            <path d="M150 205c10 0 18 7 18 16-9 0-18-6-18-16z" fill="#1C6B47"/>
+            <line x1="120" y1="238" x2="180" y2="238" stroke="#12291E" stroke-opacity=".18" stroke-width="2"/>
+            <text x="150" y="256" text-anchor="middle" font-family="Space Mono" font-size="11" fill="#12291E" opacity=".6">SÜRPRİZ PAKET</text>
+          </svg>
+        </div>
+        <div class="reveal">
+          <div class="eyebrow">Sürpriz paket ile tanış</div>
+          <h2>İçinde ne var? Günün en iyisi.</h2>
+          <p class="lead" style="max-width:42ch">İşletme, o gün satılmayan taze ürünlerden bir paket hazırlar. Ne çıkacağı sürpriz — ama değeri hep ödediğinden fazla.</p>
+          <div class="value-card">
+            <div class="value-row"><span class="k">İçindekilerin değeri</span><span class="v old">₺150+</span></div>
+            <div class="value-row"><span class="k">Sen ödersin</span><span class="v pay">₺49</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETKİ -->
+  <section id="etki" style="padding-top:0">
+    <div class="wrap">
+      <div class="impact reveal">
+        <div class="lead-col">
+          <div class="eyebrow" style="color:var(--amber)">Bugüne kadar</div>
+          <h2>Birlikte az şey kurtarmadık.</h2>
+          <p>Her kapılan paket, çöpe gitmeyecek bir öğün ve önlenen bir avuç karbon demek.</p>
+        </div>
+        <div class="stat"><div class="n" data-count="142000">0</div><div class="l">öğün kurtarıldı</div></div>
+        <div class="stat"><div class="n" data-count="3800000" data-prefix="₺">0</div><div class="l">cepte kaldı</div></div>
+        <div class="stat"><div class="n" data-count="310" data-suffix=" t">0</div><div class="l">CO₂ önlendi</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESNAF -->
+  <section id="esnaf" style="padding-top:0">
+    <div class="wrap">
+      <div class="merchant reveal">
+        <div class="mtext">
+          <div class="eyebrow">İşletmeler için</div>
+          <h2>Fazla ürünün, gelire dönsün.</h2>
+          <p>Gün sonunda kalanı çöpe atmak yerine sürpriz pakete koy. Yeni müşterilerle tanış, tabelanı komşuluğa duyur.</p>
+          <ul>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Kurulum ücretsiz, komisyon sipariş başına sabit</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Paket saatlerini ve stoğu sen belirlersin</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Hakediş ve siparişler tek panelde</li>
+          </ul>
+          <a class="btn btn-solid" href="#">İşletme başvurusu →</a>
+        </div>
+        <div class="mside">
+          <div class="cap">Ortalama işletme, ayda</div>
+          <div class="big">₺8.400</div>
+          <div class="cap">çöpe gidecek üründen gelir yarattı.*</div>
+          <div class="cap" style="opacity:.6;font-size:11px;margin-top:8px">*Pilot dönem ortalaması, temsilidir.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section id="sss" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal" style="margin-inline:auto;text-align:center">
+        <div class="eyebrow" style="text-align:center">Merak edilenler</div>
+        <h2>Zula'dan kısaca.</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>Pakette ne çıkacağını biliyor muyum? <span class="plus">+</span></summary>
+          <p>Sürpriz paketlerde içerik o günün fazlasına göre değişir; işletme paketin türünü ve tahmini içeriğini belirtir. Sürpriz kısmı işin keyfi — ama hep taze ve gününde.</p></details>
+        <details><summary>Ne kadar tasarruf ederim? <span class="plus">+</span></summary>
+          <p>Paketler normal fiyatının genelde yarısı ya da altındadır. Ortalama tasarruf %60 civarında.</p></details>
+        <details><summary>Paketi ne zaman alıyorum? <span class="plus">+</span></summary>
+          <p>Her işletme bir alım penceresi belirler (çoğunlukla gün sonu). Ayırdığın saat aralığında gidip kodunla teslim alırsın.</p></details>
+        <details><summary>"Zula" ne demek? <span class="plus">+</span></summary>
+          <p>Zula, saklanan değerli şeyin adıdır — sincapların kışa hazırlık istifi gibi. Biz de şehrin iyi yemeğini çöpe gitmeden istifliyoruz.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="final reveal">
+        <h2>Bu akşam bir öğün kurtar.</h2>
+        <div class="cta-row">
+          <a class="store-btn" href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.5-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.3 2-1.4 2.5-.4 6.1 1 8.1.7 1 1.4 2 2.4 2 .9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-1 2.3-2 .7-1.1 1-2.1 1-2.2 0 0-1.9-.7-1.9-2.9zM14.7 6.3c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.9.1 1.8-.4 2.3-1.1z"/></svg><span><small>İndir</small><b>App Store</b></span></a>
+          <a class="store-btn" href="#"><svg width="18" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l.1.1L13 12.1v-.2L3.7 2.2zM17 15.3l-2.9-2.9L17 9.5l3.4 1.9c1 .6 1 1.5 0 2zM13.6 12.7l3 3-9.4 5.3c-.4.2-.8.1-1-.1zM7.2 3.1l6.4 6.2-3 3-6.4-9.1c.2-.2.6-.3 1-.1z"/></svg><span><small>İndir</small><b>Google Play</b></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="#" style="margin-bottom:14px">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 12h20l-2 2H8z" fill="#12291E"/><path d="M8 14h16v3c0 5-3.6 9-8 9s-8-4-8-9z" fill="#C6612B"/><path d="M15 4c3 1 4.5 3.4 4 6H14c-.4-2.6.6-5 1-6z" fill="#1C6B47"/></svg>
+        <span class="wm">Zula<span style="color:var(--forest)">'dan</span></span>
+      </a>
+      <div class="note">İyi yemek çöpe değil, zulaya gider.<br/>© 2026 Zula'dan</div>
+    </div>
+    <div class="cols">
+      <div><h4>Uygulama</h4><a href="#nasil">Nasıl çalışır</a><a href="#etki">Etki</a><a href="#indir">İndir</a></div>
+      <div><h4>İşletme</h4><a href="#esnaf">Başvuru</a><a href="#esnaf">Panel</a><a href="#sss">SSS</a></div>
+      <div><h4>Kurumsal</h4><a href="#">Hakkımızda</a><a href="#">Gizlilik</a><a href="#">İletişim</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // deals ticker içeriği
+  (function(){
+    var items=[
+      ["Mis Fırın","Sabah Sürprizi","₺39"],["Ada Sushi","Akşam Paketi","₺89"],
+      ["Yeşil Market","Manav Kasası","₺59"],["Kırk Fırın","Poğaça Paketi","₺29"],
+      ["Nar Kafe","Tatlı Kutusu","₺45"],["Deniz Restoran","Şef Paketi","₺120"],
+      ["Günaydın Pastane","Kek Paketi","₺49"]
+    ];
+    var t=document.getElementById('tick'), html="";
+    function row(){var s="";items.forEach(function(i){s+='<span><i class="dot"></i>'+i[0]+' · '+i[1]+' <b>'+i[2]+'</b></span>';});return s;}
+    t.innerHTML=row()+row(); // sonsuz akış için iki kopya
+  })();
+
+  // sayaç animasyonu
+  function animCount(el){
+    var target=+el.dataset.count, pre=el.dataset.prefix||"", suf=el.dataset.suffix||"", t0=null, dur=1400;
+    function fmt(n){return pre+Math.round(n).toLocaleString('tr-TR')+suf;}
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+
+  // scroll reveal + sayaç tetikleme
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        e.target.querySelectorAll&&e.target.querySelectorAll('[data-count]').forEach(function(c){if(!c._d){c._d=1;animCount(c);}});
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.2});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
